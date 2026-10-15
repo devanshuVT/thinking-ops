@@ -1,5 +1,5 @@
 {
- "generated": "2026-10-15T19:48:45+00:00",
+ "generated": "2026-10-15T19:54:35+00:00",
  "agents": [
   {
    "name": "Agent Command dashboard",
@@ -41,7 +41,7 @@
    "effort": "3",
    "status": "open",
    "id": "conformal-sigcap",
-   "score": 4
+   "score": 4.0
   },
   {
    "title": "Short note on weak significance in returns forecasting",
@@ -51,7 +51,7 @@
    "effort": "1",
    "status": "open",
    "id": "returns-eval-note",
-   "score": 12
+   "score": 12.0
   },
   {
    "title": "Batch scoring endpoint and prefill/decode split in inference server",
@@ -81,7 +81,7 @@
    "effort": "3",
    "status": "open",
    "id": "vol-calibration",
-   "score": 4
+   "score": 4.0
   }
  ],
  "tasks": [
@@ -111,7 +111,7 @@
    "goal": "Build and benchmark an inference-serving portfolio system, measuring latency, throughput, and network-aware scheduling under heterogeneous resources.",
    "status": "active",
    "area": "Inference",
-   "next": "Run a reproducible baseline inference benchmark before implementing adaptive scheduling.",
+   "next": "Run a reproducible baseline inference benchmark and record TTFT and throughput before implementing adaptive scheduling.",
    "linked_agents": "",
    "linked_ideas": "serve-score-split",
    "id": "inference-server-portfolio"
