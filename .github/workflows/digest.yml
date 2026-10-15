@@ -1,0 +1,28 @@
+name: digest (manual, uses college model API)
+on:
+  workflow_dispatch:
+    inputs:
+      prompt:
+        description: "What to generate"
+        default: "Summarize open ideas in board/ideas and suggest which to promote, with reasons."
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    env:
+      LLM_BASE_URL: ${{ vars.LLM_BASE_URL }}
+      LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+      LLM_MODEL: ${{ vars.LLM_MODEL }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Generate
+        run: |
+          mkdir -p digests
+          python scripts/llm.py "${{ github.event.inputs.prompt }}
+
+          $(cat board/ideas/*.md)" > "digests/$(date +%F)-manual.md"
+      - name: Commit
+        run: |
+          git config user.name "digest-bot"; git config user.email "digest-bot@users.noreply.github.com"
+          git add digests; git diff --cached --quiet || (git commit -m "digests: add generated digest" && git push)
