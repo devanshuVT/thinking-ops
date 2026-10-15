@@ -1,0 +1,156 @@
+{
+ "generated": "2026-10-15T19:48:45+00:00",
+ "agents": [
+  {
+   "name": "Agent Command dashboard",
+   "status": "done",
+   "owner": "Claude",
+   "progress": "100",
+   "blocker": "",
+   "next": "Replaced by BOARD.md in this repo; keep the artifact as a mobile view if wanted",
+   "done_when": "Dashboard published and seeded",
+   "id": "agent-command-dashboard"
+  },
+  {
+   "name": "TSFM calibration paper",
+   "status": "blocked",
+   "owner": "Claude",
+   "progress": "10",
+   "blocker": "Claude sandbox cannot reach Hugging Face, price-data sites or arXiv. Run the experiment repo on Colab or a machine with internet.",
+   "next": "Build experiment repo and LaTeX template; run once on Colab",
+   "done_when": "PDF compiled from real results (CRPS, coverage, conformal tables on a pre-registered rolling split)",
+   "id": "tsfm-calibration-paper"
+  },
+  {
+   "name": "Weekday researcher feed",
+   "status": "running",
+   "owner": "Scheduled task",
+   "progress": "60",
+   "blocker": "",
+   "next": "Review first full digest and tune the watchlist",
+   "done_when": "Recurring. A digest or an explicit nothing-new line every weekday.",
+   "id": "weekday-researcher-feed"
+  }
+ ],
+ "ideas": [
+  {
+   "title": "Conformal intervals for SigCap reconstruction",
+   "area": "Time series",
+   "impact": "4",
+   "confidence": "3",
+   "effort": "3",
+   "status": "open",
+   "id": "conformal-sigcap",
+   "score": 4
+  },
+  {
+   "title": "Short note on weak significance in returns forecasting",
+   "area": "Quant",
+   "impact": "3",
+   "confidence": "4",
+   "effort": "1",
+   "status": "open",
+   "id": "returns-eval-note",
+   "score": 12
+  },
+  {
+   "title": "Batch scoring endpoint and prefill/decode split in inference server",
+   "area": "Inference",
+   "impact": "4",
+   "confidence": "4",
+   "effort": "3",
+   "status": "open",
+   "id": "serve-score-split",
+   "score": 5.3
+  },
+  {
+   "title": "Synthetic-data world model for 5G digital twins",
+   "area": "Networking",
+   "impact": "3",
+   "confidence": "2",
+   "effort": "4",
+   "status": "open",
+   "id": "twin-5g",
+   "score": 1.5
+  },
+  {
+   "title": "Calibration check for TSFM volatility forecasts",
+   "area": "Quant",
+   "impact": "4",
+   "confidence": "3",
+   "effort": "3",
+   "status": "open",
+   "id": "vol-calibration",
+   "score": 4
+  }
+ ],
+ "tasks": [
+  {
+   "title": "Build TSFM calibration experiment repo and LaTeX paper template",
+   "status": "ready",
+   "assignee": "codex",
+   "agent": "tsfm-calibration-paper",
+   "id": "0001-build-calibration-repo"
+  }
+ ],
+ "decisions": [
+  {
+   "id": "0001-github-as-backend",
+   "title": "0001. GitHub is the system of record"
+  },
+  {
+   "id": "0002-projects-layer",
+   "title": "0002. Add a projects layer to the operating board"
+  }
+ ],
+ "projects": [
+  {
+   "name": "Inference server portfolio project",
+   "path": "",
+   "repo": "",
+   "goal": "Build and benchmark an inference-serving portfolio system, measuring latency, throughput, and network-aware scheduling under heterogeneous resources.",
+   "status": "active",
+   "area": "Inference",
+   "next": "Run a reproducible baseline inference benchmark before implementing adaptive scheduling.",
+   "linked_agents": "",
+   "linked_ideas": "serve-score-split",
+   "id": "inference-server-portfolio"
+  },
+  {
+   "name": "SigCap sparse-to-dense reconstruction",
+   "path": "",
+   "repo": "",
+   "goal": "Reconstruct dense radio KPI time series from sparse SigCap measurements and evaluate reconstruction quality and uncertainty without inventing labels.",
+   "status": "active",
+   "area": "Time series",
+   "next": "Audit the SigCap sampling intervals and establish a held-out reconstruction evaluation with observed values as ground truth.",
+   "linked_agents": "",
+   "linked_ideas": "conformal-sigcap",
+   "id": "sigcap-sparse-to-dense"
+  },
+  {
+   "name": "SIM-farm digital twin detection",
+   "path": "",
+   "repo": "",
+   "goal": "Evaluate radio KPIs and core-network signals for carrier-side SIM-farm fraud detection using simulations and testbed measurements.",
+   "status": "active",
+   "area": "Networking",
+   "next": "Compare per-UE CQI, RSRP and RSRQ variability and validate the classifier with testbed measurements.",
+   "linked_agents": "",
+   "linked_ideas": "twin-5g",
+   "id": "sim-farm-digital-twin"
+  },
+  {
+   "name": "TSFM calibration paper",
+   "path": "",
+   "repo": "",
+   "goal": "Calibrated quantile forecasts on daily returns with conformal correction; arXiv-ready PDF",
+   "status": "active",
+   "area": "Quant",
+   "next": "Build the reproducible experiment repo and LaTeX template; run with real data on an internet-enabled environment.",
+   "linked_agents": "tsfm-calibration-paper",
+   "linked_ideas": "vol-calibration, returns-eval-note",
+   "id": "tsfm-calibration-paper"
+  }
+ ]
+}
